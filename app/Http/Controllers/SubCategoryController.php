@@ -15,10 +15,11 @@ class SubCategoryController extends Controller
     public function index()
     {
         // $subCategories = SubCategory::where("status",1)->get();
-        $data=[
-        'subCategories'=>SubCategory::where('status',1)->get(),
-        'categories'=> Category::where('status',1)->get(),
+        $data = [
+            'subCategories' => SubCategory::where('status', 1)->get(),
+            'categories' => Category::where('status', 1)->get(),
         ];
+
         return view('Subcategory.subcategory')->with($data);
 
     }
@@ -37,12 +38,13 @@ class SubCategoryController extends Controller
     public function store(Request $request)
     {
         $subCategories = SubCategory::create([
-            'name'=> $request->name,
-            'category_id'=> $request->category_id,
-            'user_id'=>Auth::user()->id,
-            'status'=>1,
+            'name' => $request->name,
+            'category_id' => $request->category_id,
+            'user_id' => Auth::user()->id,
+            'status' => 1,
         ]);
-        return redirect()->back()->with('success','SubCategory Added');
+
+        return redirect()->back()->with('success', 'SubCategory Added');
     }
 
     /**
@@ -64,18 +66,22 @@ class SubCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)//edit page
+    public function update(Request $request, $id)// edit page
     {
         $request->validate([
-            'name'=> 'required|string|max:255|unique:subcategories,name',
+            'name' => 'required|string|max:255|unique:sub_categories,name,'.$id,
         ]);
+        // $request->validate([
+        //     'name' => 'required|string|max:255|unique:subcategories,name,'.$id,
+        // ]);
         $subcategories = SubCategory::findOrFail($id)->update([
-            'name'=> $request->name,
-            'category_id'=> $request->category_id,
-            'user_id'=> Auth::user()->id,
-            'status'=> 1,
+            'name' => $request->name,
+            'category_id' => $request->category_id,
+            'user_id' => Auth::user()->id,
+            'status' => 1,
         ]);
-        return redirect()->back()->with('success','Subcateogry Edited!!!');
+
+        return redirect()->back()->with('success', 'Subcateogry Edited!!!');
     }
 
     /**
@@ -83,7 +89,8 @@ class SubCategoryController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $subcategories = SubCategory::findOrFail($id)->update(['status'=> 0,]);
-        return redirect()->back()->with('success','Subcateogry Edited!!!');
+        $subcategories = SubCategory::findOrFail($id)->update(['status' => 0]);
+
+        return redirect()->back()->with('success', 'Subcateogry Edited!!!');
     }
 }

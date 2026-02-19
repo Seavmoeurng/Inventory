@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span>Category</span>
-                        <a href="{{ route('product.create') }}" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                        <a href="" class="btn btn-success btn-sm" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">Add Product</a>
                         {{-- put a modal here --}}
                         <!-- Button trigger modal -->
@@ -82,14 +82,15 @@
                                                 <input type="file" name="image" class="form-control" id="image">
                                             </div>
 
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                    <button type="submit" class="btn btn-success px-5">Add
+                                                        Product</button>
+                                                </div>
+                                            </div>
                                         </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                            <button type="submit" class="btn btn-success px-5">Add Product</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -111,7 +112,7 @@
                                     <th scope="col">Product Name</th>
                                     <th scope="col">Describtion</th>
                                     <th scope="col">QTY</th>
-                                    <th scope="col">Price</th>
+                                    <th scope="col">Price ($)</th>
                                     <th scope="col">Image</th>
                                     <th scope="col">User</th>
                                     <th scope="col">Action</th>
